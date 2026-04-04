@@ -1,0 +1,26 @@
+<div class="layout">
+  <aside class="sidebar" aria-label="Main navigation">
+    <div class="brand">
+      <span class="brand__mark">◆</span>
+      <span class="brand__text">Demo console</span>
+    </div>
+    <nav class="nav">
+      <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
+      <a routerLink="/users" routerLinkActive="active">Users</a>
+      <a routerLink="/snippets" routerLinkActive="active">Snippets</a>
+    </nav>
+    <div class="sidebar__footer">
+      <app-button type="button" variant="ghost" (clicked)="toggleTheme()">
+        {{ themeUi.mode() === 'dark' ? 'Light mode' : 'Dark mode' }}
+      </app-button>
+    </div>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <h1 class="topbar__title">Sample shell — no backend hooked up</h1>
+    </header>
+    <main class="content">
+      <router-outlet />
+    </main>
+  </div>
+</div>

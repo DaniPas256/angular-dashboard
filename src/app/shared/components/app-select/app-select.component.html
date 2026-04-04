@@ -1,0 +1,17 @@
+<div class="field">
+  @if (label()) {
+    <label class="field__label" [attr.for]="controlId">{{ label() }}</label>
+  }
+  <select
+    class="field__select"
+    [id]="controlId"
+    [disabled]="disabled"
+    [value]="value"
+    (change)="onSelect($any($event.target).value)"
+    (blur)="onBlur()"
+  >
+    @for (opt of options(); track trackByValue($index, opt)) {
+      <option [value]="opt.value">{{ opt.label }}</option>
+    }
+  </select>
+</div>

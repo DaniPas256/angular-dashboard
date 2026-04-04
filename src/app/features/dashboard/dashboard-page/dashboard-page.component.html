@@ -1,0 +1,28 @@
+<h1 class="page-title">Dashboard</h1>
+<p class="page-lead">Static numbers and charts; there is a short delay so the loading skeleton actually flashes.</p>
+
+@let bundle = data$ | async;
+
+@if (!bundle) {
+  <div class="grid grid--stats">
+    @for (i of [1, 2, 3, 4]; track i) {
+      <app-skeleton height="120px" [rounded]="'md'" />
+    }
+  </div>
+  <div class="grid grid--charts">
+    <app-skeleton height="320px" [rounded]="'md'" />
+    <app-skeleton height="320px" [rounded]="'md'" />
+    <app-skeleton height="320px" [rounded]="'md'" />
+  </div>
+} @else {
+  <div class="grid grid--stats">
+    @for (s of bundle.stats; track trackStatById($index, s)) {
+      <app-stats-card [label]="s.label" [value]="s.value" [hint]="s.hint ?? ''" />
+    }
+  </div>
+  <div class="grid grid--charts">
+    <app-chart-card title="Traffic (line)" chartType="line" [data]="bundle.line" [options]="chartOptions" />
+    <app-chart-card title="Effort by area (bar)" chartType="bar" [data]="bundle.bar" [options]="chartOptions" />
+    <app-chart-card title="Stack split (pie)" chartType="pie" [data]="bundle.pie" [options]="pieOptions" />
+  </div>
+}

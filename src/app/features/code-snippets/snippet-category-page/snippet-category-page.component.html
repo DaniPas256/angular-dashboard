@@ -1,0 +1,32 @@
+@if (page(); as doc) {
+  <article class="snippet-doc">
+    <header class="snippet-doc__intro">
+      <h1 class="snippet-doc__title">{{ doc.title }}</h1>
+      <p class="snippet-doc__lead">{{ doc.lead }}</p>
+    </header>
+
+    @for (section of doc.sections; track trackSection($index, section)) {
+      <section class="snippet-section">
+        <h2 class="snippet-section__heading">{{ section.heading }}</h2>
+        @for (p of section.paragraphs ?? []; track $index) {
+          <p class="snippet-section__text">{{ p }}</p>
+        }
+        @if (section.codeBlocks?.length) {
+          @for (block of section.codeBlocks; track $index) {
+            <figure class="snippet-code">
+              @if (block.title) {
+                <figcaption class="snippet-code__caption">{{ block.title }}</figcaption>
+              }
+              <div class="snippet-code__meta">{{ block.language }}</div>
+              <pre class="snippet-code__pre"><code>{{ block.code }}</code></pre>
+            </figure>
+          }
+        }
+      </section>
+    }
+  </article>
+} @else {
+  <app-card title="Snippets">
+    <p class="snippet-doc__missing">No page found for this category.</p>
+  </app-card>
+}

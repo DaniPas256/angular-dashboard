@@ -1,0 +1,25 @@
+.page-title {
+  margin: 0 0 var(--space-2);
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.page-lead {
+  margin: 0 0 var(--space-8);
+  color: var(--color-text-muted);
+  max-width: 42rem;
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-5);
+
+  &--stats {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin-bottom: var(--space-8);
+  }
+
+  &--charts {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}

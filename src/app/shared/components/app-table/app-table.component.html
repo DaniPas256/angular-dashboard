@@ -1,0 +1,31 @@
+<div class="table-wrap">
+  <table class="table">
+    <thead>
+      <tr>
+        @for (col of columns(); track col.key) {
+          <th
+            scope="col"
+            [class.table__th--sortable]="col.sortable"
+            (click)="onHeaderClick(col)"
+          >
+            <span class="table__th-inner">
+              {{ col.label }}
+              @if (col.sortable) {
+                <span class="table__sort" aria-hidden="true">{{ sortIcon(col) }}</span>
+              }
+            </span>
+          </th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of rows(); track trackByRow($index, row)) {
+        <tr class="table__row" (click)="onRowClick(row)">
+          @for (col of columns(); track col.key) {
+            <td>{{ cellValue(row, col.key) }}</td>
+          }
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

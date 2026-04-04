@@ -1,0 +1,20 @@
+<div class="snippets">
+  <aside class="snippets__nav" aria-label="Snippet categories">
+    <h2 class="snippets__nav-title">Categories</h2>
+    <input
+      type="search"
+      class="snippets__filter"
+      placeholder="Filter categories…"
+      [value]="categoryQuery()"
+      (input)="onQueryInput($any($event.target).value)"
+    />
+    <nav class="snippets__links">
+      @for (c of catalog.categories | appFilter : categoryQuery() : 'label'; track trackCategory($index, c)) {
+        <a [routerLink]="c.path" routerLinkActive="active">{{ c.label }}</a>
+      }
+    </nav>
+  </aside>
+  <section class="snippets__content">
+    <router-outlet />
+  </section>
+</div>

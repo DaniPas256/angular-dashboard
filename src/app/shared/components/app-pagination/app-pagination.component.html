@@ -1,0 +1,26 @@
+<div class="pagination">
+  <div class="pagination__info">
+    @if (total() === 0) {
+      <span>No results</span>
+    } @else {
+      <span>{{ from }}–{{ to }} of {{ total() }}</span>
+    }
+  </div>
+  <div class="pagination__controls">
+    <label class="pagination__size">
+      Rows
+      <select [value]="pageSize()" (change)="onPageSizeChange($any($event.target).value)">
+        @for (n of pageSizeOptions; track n) {
+          <option [value]="n">{{ n }}</option>
+        }
+      </select>
+    </label>
+    <div class="pagination__nav">
+      <button type="button" class="pagination__btn" [disabled]="page() <= 1" (click)="prev()">Prev</button>
+      <span class="pagination__page">Page {{ page() }} / {{ totalPages }}</span>
+      <button type="button" class="pagination__btn" [disabled]="page() >= totalPages" (click)="next()">
+        Next
+      </button>
+    </div>
+  </div>
+</div>

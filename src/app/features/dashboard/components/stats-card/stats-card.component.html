@@ -1,0 +1,7 @@
+<article class="stat">
+  <p class="stat__label">{{ label() }}</p>
+  <p class="stat__value">{{ value() }}</p>
+  @if (hint()) {
+    <p class="stat__hint">{{ hint() }}</p>
+  }
+</article>

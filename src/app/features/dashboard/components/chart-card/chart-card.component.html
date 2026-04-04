@@ -1,0 +1,9 @@
+<app-card [title]="title()">
+  <div class="chart-card__canvas">
+    @if (chartType() === 'pie' && pieData) {
+      <canvas baseChart [type]="'pie'" [data]="pieData" [options]="options()"></canvas>
+    } @else if (nonPieData) {
+      <canvas baseChart [type]="chartType()" [data]="nonPieData" [options]="options()"></canvas>
+    }
+  </div>
+</app-card>

@@ -1,0 +1,51 @@
+<form class="form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+  <app-input label="Name" formControlName="name" inputId="user-name" autocomplete="name" />
+  @if (form.controls.name.touched && form.controls.name.errors; as err) {
+    <ul class="form__errors">
+      @if (err['required']) {
+        <li>Name is required.</li>
+      }
+      @if (err['minlength']) {
+        <li>Name must be at least {{ err['minlength'].requiredLength }} characters.</li>
+      }
+      @if (err['maxlength']) {
+        <li>Name must be at most {{ err['maxlength'].requiredLength }} characters.</li>
+      }
+    </ul>
+  }
+
+  <app-input label="Email" type="email" formControlName="email" inputId="user-email" autocomplete="email" />
+  @if (form.controls.email.touched && form.controls.email.errors; as err) {
+    <ul class="form__errors">
+      @if (err['required']) {
+        <li>Email is required.</li>
+      }
+      @if (err['email']) {
+        <li>Enter a valid email.</li>
+      }
+      @if (err['maxlength']) {
+        <li>Email is too long.</li>
+      }
+    </ul>
+  }
+
+  <app-input label="Role" formControlName="role" inputId="user-role" autocomplete="organization-title" />
+  @if (form.controls.role.touched && form.controls.role.errors; as err) {
+    <ul class="form__errors">
+      @if (err['required']) {
+        <li>Role is required.</li>
+      }
+      @if (err['minlength']) {
+        <li>Role must be at least {{ err['minlength'].requiredLength }} characters.</li>
+      }
+      @if (err['maxlength']) {
+        <li>Role must be at most {{ err['maxlength'].requiredLength }} characters.</li>
+      }
+    </ul>
+  }
+
+  <div class="form__actions">
+    <app-button type="button" variant="secondary" (clicked)="cancel()">Cancel</app-button>
+    <app-button type="submit" variant="primary">{{ mode() === 'edit' ? 'Save' : 'Create' }}</app-button>
+  </div>
+</form>
