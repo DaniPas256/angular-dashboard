@@ -1,5 +1,7 @@
 # Portfolio Admin (Angular)
 
+[DEMO](https://danipas256.github.io/angular-dashboard/dashboard)
+
 Small **admin-style** front-end demo: lazy feature modules, a shared UI kit, Chart.js on the dashboard, a fake user table with reactive forms, and a snippets section with copy + sample code.
 
 ## Stack
