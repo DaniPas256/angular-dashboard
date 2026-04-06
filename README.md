@@ -6,7 +6,7 @@ Small **admin-style** front-end demo: lazy feature modules, a shared UI kit, Cha
 
 ## Stack
 
-- Angular **21** (NgModules, strict TypeScript)
+- Angular **21** (strict TypeScript)
 - SCSS tokens + light/dark toggle (`ThemeUiService`, `localStorage`)
 - [Chart.js](https://www.chartjs.org/) + [ng2-charts](https://github.com/valor-software/ng2-charts)
 
