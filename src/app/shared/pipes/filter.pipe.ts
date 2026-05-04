@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'appFilter',
-  standalone: false
+  standalone: true,
 })
 export class AppFilterPipe implements PipeTransform {
   transform<T>(items: readonly T[] | null | undefined, query: string, key?: keyof T): T[] {

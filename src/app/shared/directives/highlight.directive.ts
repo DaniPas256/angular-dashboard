@@ -2,7 +2,7 @@ import { booleanAttribute, Directive, HostBinding, input } from '@angular/core';
 
 @Directive({
   selector: '[appHighlight]',
-  standalone: false,
+  standalone: true,
 })
 export class HighlightDirective {
   readonly appHighlight = input(false, { transform: booleanAttribute });

@@ -1,6 +1,5 @@
 import { AppButtonComponent } from './../../../shared/components/app-button/app-button.component';
 import { AppInputComponent } from './../../../shared/components/app-input/app-input.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserFormComponent } from './user-form.component';
 import { TestBed } from "@angular/core/testing"
 
@@ -16,8 +15,7 @@ describe('UserForm', () => {
 
   beforeEach( () => { 
     TestBed.configureTestingModule({
-      declarations: [UserFormComponent, AppInputComponent, AppButtonComponent],
-      imports: [ReactiveFormsModule, FormsModule]
+      imports: [UserFormComponent, AppInputComponent, AppButtonComponent]
     })
 
     fixture = TestBed.createComponent(UserFormComponent)

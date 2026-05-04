@@ -1,10 +1,9 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import { AdminLayoutComponent } from './core/layout/admin-layout.component';
 import { UserResolve } from './features/user-data/resolvers/user-data.resolver';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     component: AdminLayoutComponent,
@@ -13,26 +12,26 @@ const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () =>
-          import('./features/dashboard/dashboard.module').then((m) => m.DashboardModule),
+          import('./features/dashboard/dashboard-routing.module').then(
+            (m) => m.dashboardRoutes,
+          ),
       },
       {
         path: 'users',
         resolve: { users: UserResolve },
         loadChildren: () =>
-          import('./features/user-data/user-data.module').then((m) => m.UserDataModule),
+          import('./features/user-data/user-data-routing.module').then(
+            (m) => m.userDataRoutes,
+          ),
       },
       {
         path: 'snippets',
         loadChildren: () =>
-          import('./features/code-snippets/snippets.module').then((m) => m.SnippetsModule),
+          import('./features/code-snippets/snippets-routing.module').then(
+            (m) => m.snippetsRoutes,
+          ),
       },
     ],
   },
   { path: '**', redirectTo: 'dashboard' },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}

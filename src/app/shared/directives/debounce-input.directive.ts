@@ -4,7 +4,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Directive({
   selector: '[appDebounceInput]',
-  standalone: false,
+  standalone: true,
   host: {
     '(input)': 'onInput($event)',
   },

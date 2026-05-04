@@ -1,10 +1,13 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
+import { AppFilterPipe } from '../../../shared/pipes/filter.pipe';
 import { SnippetsCatalogService } from '../services/snippets-catalog.service';
 
 @Component({
   selector: 'app-snippets-layout',
-  standalone: false,
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive, RouterOutlet, AppFilterPipe],
   templateUrl: './snippets-layout.component.html',
   styleUrl: './snippets-layout.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

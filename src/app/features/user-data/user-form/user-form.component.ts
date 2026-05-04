@@ -6,13 +6,16 @@ import {
   input,
   output,
 } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
+import { AppButtonComponent } from '../../../shared/components/app-button/app-button.component';
+import { AppInputComponent } from '../../../shared/components/app-input/app-input.component';
 import type { User } from '../models/user.model';
 
 @Component({
   selector: 'app-user-form',
-  standalone: false,
+  standalone: true,
+  imports: [ReactiveFormsModule, AppInputComponent, AppButtonComponent],
   templateUrl: './user-form.component.html',
   styleUrl: './user-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

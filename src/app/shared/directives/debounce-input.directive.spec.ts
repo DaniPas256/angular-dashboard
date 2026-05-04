@@ -4,7 +4,8 @@ import { Component } from "@angular/core";
 import { By } from '@angular/platform-browser';
 
 @Component({
-  standalone: false,
+  standalone: true,
+  imports: [DebounceInputDirective],
   template: `<div><input appDebounceInput><div>`
 })
 class TestComponent {
@@ -17,7 +18,7 @@ describe('DebounceInputDirective', () => {
 
   beforeEach( () => {
     fixture = TestBed.configureTestingModule({
-      declarations: [TestComponent, DebounceInputDirective]
+      imports: [TestComponent]
     }).createComponent(TestComponent)
 
     component = fixture.componentInstance;

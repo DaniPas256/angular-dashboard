@@ -9,7 +9,7 @@ export type AppButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
 
 @Component({
   selector: 'app-button',
-  standalone: false,
+  standalone: true,
   templateUrl: './app-button.component.html',
   styleUrl: './app-button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

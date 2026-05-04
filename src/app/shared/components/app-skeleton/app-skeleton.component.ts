@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-skeleton',
-  standalone: false,
+  standalone: true,
   templateUrl: './app-skeleton.component.html',
   styleUrl: './app-skeleton.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

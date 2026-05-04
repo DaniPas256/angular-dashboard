@@ -4,11 +4,13 @@ import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 
 import type { SnippetSection } from '../models/snippet-content.model';
+import { AppCardComponent } from '../../../shared/components/app-card/app-card.component';
 import { SnippetsContentService } from '../services/snippets-content.service';
 
 @Component({
   selector: 'app-snippet-category-page',
-  standalone: false,
+  standalone: true,
+  imports: [AppCardComponent],
   templateUrl: './snippet-category-page.component.html',
   styleUrl: './snippet-category-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

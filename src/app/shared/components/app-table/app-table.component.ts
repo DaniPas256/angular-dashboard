@@ -9,7 +9,7 @@ import type { AppTableColumn, SortDirection } from './app-table.models';
 
 @Component({
   selector: 'app-table',
-  standalone: false,
+  standalone: true,
   templateUrl: './app-table.component.html',
   styleUrl: './app-table.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -11,7 +11,7 @@ import type { AppSelectOption } from './app-select.models';
 
 @Component({
   selector: 'app-select',
-  standalone: false,
+  standalone: true,
   templateUrl: './app-select.component.html',
   styleUrl: './app-select.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

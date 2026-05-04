@@ -1,61 +1,78 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 
-import { SnippetCategoryPageComponent } from './snippet-category-page/snippet-category-page.component';
-import { SnippetsLayoutComponent } from './snippets-layout/snippets-layout.component';
-
-const routes: Routes = [
+export const snippetsRoutes: Routes = [
   {
     path: '',
-    component: SnippetsLayoutComponent,
+    loadComponent: () =>
+      import('./snippets-layout/snippets-layout.component').then(
+        (m) => m.SnippetsLayoutComponent,
+      ),
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'form-builder' },
       {
         path: 'form-builder',
-        component: SnippetCategoryPageComponent,
+        loadComponent: () =>
+          import('./snippet-category-page/snippet-category-page.component').then(
+            (m) => m.SnippetCategoryPageComponent,
+          ),
         data: { snippetId: 'form-builder' },
       },
       {
         path: 'http-interceptor-jwt',
-        component: SnippetCategoryPageComponent,
+        loadComponent: () =>
+          import('./snippet-category-page/snippet-category-page.component').then(
+            (m) => m.SnippetCategoryPageComponent,
+          ),
         data: { snippetId: 'http-interceptor-jwt' },
       },
       {
         path: 'auth-guard',
-        component: SnippetCategoryPageComponent,
+        loadComponent: () =>
+          import('./snippet-category-page/snippet-category-page.component').then(
+            (m) => m.SnippetCategoryPageComponent,
+          ),
         data: { snippetId: 'auth-guard' },
       },
       {
         path: 'pipe',
-        component: SnippetCategoryPageComponent,
+        loadComponent: () =>
+          import('./snippet-category-page/snippet-category-page.component').then(
+            (m) => m.SnippetCategoryPageComponent,
+          ),
         data: { snippetId: 'pipe' },
       },
       {
         path: 'directive',
-        component: SnippetCategoryPageComponent,
+        loadComponent: () =>
+          import('./snippet-category-page/snippet-category-page.component').then(
+            (m) => m.SnippetCategoryPageComponent,
+          ),
         data: { snippetId: 'directive' },
       },
       {
         path: 'signals-effects-model',
-        component: SnippetCategoryPageComponent,
+        loadComponent: () =>
+          import('./snippet-category-page/snippet-category-page.component').then(
+            (m) => m.SnippetCategoryPageComponent,
+          ),
         data: { snippetId: 'signals-effects-model' },
       },
       {
         path: 'rxjs-operators',
-        component: SnippetCategoryPageComponent,
+        loadComponent: () =>
+          import('./snippet-category-page/snippet-category-page.component').then(
+            (m) => m.SnippetCategoryPageComponent,
+          ),
         data: { snippetId: 'rxjs-operators' },
       },
       {
         path: 'ngrx-overview',
-        component: SnippetCategoryPageComponent,
+        loadComponent: () =>
+          import('./snippet-category-page/snippet-category-page.component').then(
+            (m) => m.SnippetCategoryPageComponent,
+          ),
         data: { snippetId: 'ngrx-overview' },
       },
     ],
   },
 ];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-})
-export class SnippetsRoutingModule {}

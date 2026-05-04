@@ -7,7 +7,7 @@ import {
 
 @Component({
   selector: 'app-pagination',
-  standalone: false,
+  standalone: true,
   templateUrl: './app-pagination.component.html',
   styleUrl: './app-pagination.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

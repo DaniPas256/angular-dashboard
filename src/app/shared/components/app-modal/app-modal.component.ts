@@ -8,7 +8,7 @@ import {
 
 @Component({
   selector: 'app-modal',
-  standalone: false,
+  standalone: true,
   templateUrl: './app-modal.component.html',
   styleUrl: './app-modal.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

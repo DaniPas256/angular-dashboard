@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 
 import type { User } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
 
 export const USER_STORAGE_KEY = 'portfolio-admin-users';
 
@@ -36,8 +35,7 @@ export class UserService {
     },
   ];
   private readonly users$ = new BehaviorSubject<User[]>([]);
-
-  constructor( private http : HttpClient ) {}
+  private http = inject(HttpClient);
 
   init() {
     const raw = localStorage.getItem(USER_STORAGE_KEY);

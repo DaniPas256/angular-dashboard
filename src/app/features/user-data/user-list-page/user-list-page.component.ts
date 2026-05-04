@@ -1,15 +1,32 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { ActivatedRoute } from '@angular/router';
 
+import { AppButtonComponent } from '../../../shared/components/app-button/app-button.component';
+import { AppCardComponent } from '../../../shared/components/app-card/app-card.component';
+import { AppModalComponent } from '../../../shared/components/app-modal/app-modal.component';
+import { AppPaginationComponent } from '../../../shared/components/app-pagination/app-pagination.component';
+import { AppTableComponent } from '../../../shared/components/app-table/app-table.component';
+import { DebounceInputDirective } from '../../../shared/directives/debounce-input.directive';
+import { HighlightDirective } from '../../../shared/directives/highlight.directive';
 import type { AppTableColumn, SortDirection } from '../../../shared/components/app-table/app-table.models';
 import type { User, UserSortKey } from '../models/user.model';
 import { UserService } from '../services/user.service';
-import { Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { UserFormComponent } from '../user-form/user-form.component';
 
 @Component({
   selector: 'app-user-list-page',
-  standalone: false,
+  standalone: true,
+  imports: [
+    DebounceInputDirective,
+    HighlightDirective,
+    AppButtonComponent,
+    AppCardComponent,
+    AppTableComponent,
+    AppPaginationComponent,
+    AppModalComponent,
+    UserFormComponent,
+  ],
   templateUrl: './user-list-page.component.html',
   styleUrl: './user-list-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
