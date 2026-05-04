@@ -1,40 +1,59 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 
 import type { User } from '../models/user.model';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
-const STORAGE_KEY = 'portfolio-admin-users';
-
-const SEED: User[] = [
-  {
-    id: '1',
-    name: 'Ada Lovelace',
-    email: 'ada@example.com',
-    role: 'Admin',
-  },
-  {
-    id: '2',
-    name: 'Alan Turing',
-    email: 'alan@example.com',
-    role: 'Developer',
-  },
-  {
-    id: '3',
-    name: 'Grace Hopper',
-    email: 'grace@example.com',
-    role: 'Developer',
-  },
-  {
-    id: '4',
-    name: 'Margaret Hamilton',
-    email: 'margaret@example.com',
-    role: 'Lead',
-  },
-];
+export const USER_STORAGE_KEY = 'portfolio-admin-users';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  private readonly users$ = new BehaviorSubject<User[]>(this.loadInitial());
+  private SEED: User[] = [
+    {
+      id: '1',
+      name: 'Ada Lovelace',
+      email: 'ada@example.com',
+      role: 'Admin',
+    },
+    {
+      id: '2',
+      name: 'Alan Turing',
+      email: 'alan@example.com',
+      role: 'Developer',
+    },
+    {
+      id: '3',
+      name: 'Grace Hopper',
+      email: 'grace@example.com',
+      role: 'Developer',
+    },
+    {
+      id: '4',
+      name: 'Margaret Hamilton',
+      email: 'margaret@example.com',
+      role: 'Lead',
+    },
+  ];
+  private readonly users$ = new BehaviorSubject<User[]>([]);
+
+  constructor( private http : HttpClient ) {}
+
+  init() {
+    const raw = localStorage.getItem(USER_STORAGE_KEY);
+    
+    if(!raw) 
+      return this.fetchUsers();
+
+    const users = this.loadInitial()
+    this.hydrateUsers(users);
+
+    return this.getUsers();
+  }
+
+  hydrateUsers(users: User[]): void {
+    this.persist(users);
+  }
 
   getUsers(): Observable<User[]> {
     return this.users$.asObservable();
@@ -43,6 +62,21 @@ export class UserService {
   snapshot(): User[] {
     return this.users$.getValue();
   }
+
+  fetchUsers(): Observable<User[]> {
+    return this.getUsers$()
+      .pipe(
+        map( (users : User[]) =>
+          users.map(user => ({
+            id: user.id?.toString() ?? (crypto.randomUUID?.() ?? String(Date.now())),
+            name: user.name,
+            email: user.email,
+            role: 'User'
+          }))
+        ),
+        tap(users => this.hydrateUsers(users))
+      );
+  }  
 
   add(user: User): User {
     const id = crypto.randomUUID?.() ?? String(Date.now());
@@ -62,28 +96,32 @@ export class UserService {
     this.persist(list);
   }
 
-  private persist(users: User[]): void {
-    this.users$.next(users);
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
-    } catch {
-      /* ignore */
-    }
+  private getUsers$() : Observable<User[]> {
+    return this.http.get<User[]>('https://jsonplaceholder.typicode.com/users')
   }
 
   private loadInitial(): User[] {
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
+      const raw = localStorage.getItem(USER_STORAGE_KEY);
       if (!raw) {
-        return [...SEED];
+        return [...this.SEED];
       }
       const parsed = JSON.parse(raw) as unknown;
       if (!Array.isArray(parsed)) {
-        return [...SEED];
+        return [...this.SEED];
       }
       return parsed as User[];
     } catch {
-      return [...SEED];
+      return [...this.SEED];
     }
   }
+
+  private persist(users: User[]): void {
+    this.users$.next(users);
+    try {
+      localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(users));
+    } catch {
+      /* ignore */
+    }
+  }  
 }

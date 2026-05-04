@@ -1,6 +1,7 @@
 <h1 class="page-title">Users</h1>
 <p class="page-lead">
-  Sample directory: filter, sort, paginate; add or edit in a modal. Everything persists in <code>localStorage</code> until you clear it.
+  Sample directory: filter, sort, paginate; add or edit in a modal. Everything persists in
+  <code>localStorage</code> until you clear it.
 </p>
 
 <div class="toolbar">
@@ -18,7 +19,9 @@
 
 @if (selectedUser(); as user) {
   <div class="selection" [appHighlight]="true">
-    <span class="selection__text">Selected: <strong>{{ user.name }}</strong></span>
+    <span class="selection__text"
+      >Selected: <strong>{{ user.name }}</strong></span
+    >
     <div class="selection__actions">
       <app-button type="button" variant="secondary" (clicked)="openEdit(user)">Edit</app-button>
       <app-button type="button" variant="danger" (clicked)="deleteUser(user)">Delete</app-button>
@@ -45,7 +48,11 @@
   />
 </app-card>
 
-<app-modal [open]="modalOpen" [title]="modalMode === 'edit' ? 'Edit user' : 'New user'" (close)="closeModal()">
+<app-modal
+  [open]="modalOpen"
+  [title]="modalMode === 'edit' ? 'Edit user' : 'New user'"
+  (close)="closeModal()"
+>
   <app-user-form
     [mode]="modalMode"
     [user]="editingUser"

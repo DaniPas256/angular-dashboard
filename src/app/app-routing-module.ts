@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AdminLayoutComponent } from './core/layout/admin-layout.component';
+import { UserResolve } from './features/user-data/resolvers/user-data.resolver';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
       },
       {
         path: 'users',
+        resolve: { users: UserResolve },
         loadChildren: () =>
           import('./features/user-data/user-data.module').then((m) => m.UserDataModule),
       },

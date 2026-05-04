@@ -4,6 +4,8 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import type { AppTableColumn, SortDirection } from '../../../shared/components/app-table/app-table.models';
 import type { User, UserSortKey } from '../models/user.model';
 import { UserService } from '../services/user.service';
+import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-list-page',
@@ -14,6 +16,7 @@ import { UserService } from '../services/user.service';
 })
 export class UserListPageComponent {
   private readonly userService = inject(UserService);
+  private readonly route = inject(ActivatedRoute);
 
   readonly columns: readonly AppTableColumn<Record<string, unknown>>[] = [
     { key: 'name', label: 'Name', sortable: true },
@@ -56,6 +59,7 @@ export class UserListPageComponent {
     const p = this.page();
     const start = (p - 1) * ps;
     const slice = list.slice(start, start + ps).map((u) => this.toRow(u));
+
     return { slice, total };
   });
 
@@ -64,7 +68,7 @@ export class UserListPageComponent {
   editingUser: User | null = null;
 
   readonly selectedUser = signal<User | null>(null);
-
+ 
   onFilterDebounced(value: string): void {
     this.filterText.set(value);
     this.page.set(1);

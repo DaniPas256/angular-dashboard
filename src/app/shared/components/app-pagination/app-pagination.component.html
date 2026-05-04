@@ -11,7 +11,7 @@
       Rows
       <select [value]="pageSize()" (change)="onPageSizeChange($any($event.target).value)">
         @for (n of pageSizeOptions; track n) {
-          <option [value]="n">{{ n }}</option>
+          <option [value]="n" [selected]="n === pageSize()">{{ n }}</option>
         }
       </select>
     </label>

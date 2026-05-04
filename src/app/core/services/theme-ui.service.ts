@@ -3,13 +3,13 @@ import { effect, Inject, Injectable, signal } from '@angular/core';
 
 const STORAGE_KEY = 'portfolio-admin-theme';
 
-export type ThemeMode = 'light' | 'dark' | '';
+export type ThemeMode = 'light' | 'dark';
 
 @Injectable({ providedIn: 'root' })
 export class ThemeUiService {
   private readonly doc: Document;
 
-  readonly mode = signal<ThemeMode>('');
+  public mode = signal<ThemeMode>('light');
 
   constructor(@Inject(DOCUMENT) document: Document) {
     this.doc = document;
@@ -40,5 +40,4 @@ export class ThemeUiService {
     }
     return null;
   }
-
 }

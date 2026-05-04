@@ -1,48 +1,78 @@
 .page-title {
-  margin: 0 0 var(--space-2);
-  font-size: 1.75rem;
-  font-weight: 700;
+    margin: 0 0 var(--space-2);
+    font-weight: 700;
+    font-size: 1.75rem;
 }
 
 .page-lead {
-  margin: 0 0 var(--space-6);
-  color: var(--color-text-muted);
-  max-width: 42rem;
+    margin: 0 0 var(--space-6);
+    color: var(--color-text-muted);
+    max-width: 42rem;
 }
 
 .toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-4);
-  align-items: center;
-  margin-bottom: var(--space-5);
+    margin-bottom: var(--space-5);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4);
 
-  &__search {
-    flex: 1;
-    min-width: 220px;
-    font: inherit;
-    padding: var(--space-3) var(--space-4);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--color-border);
-    background: var(--color-surface);
-    color: var(--color-text);
-  }
+    &__search {
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        padding: var(--space-3) var(--space-4);
+        color: var(--color-text);
+        flex: 1;
+        min-width: 220px;
+        font: inherit;
+        background: var(--color-surface);
+    }
 }
 
 .selection {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-4);
-  padding: var(--space-4);
-  margin-bottom: var(--space-5);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-
-  &__actions {
+    margin-bottom: var(--space-5);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-2);
-  }
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-4);
+    gap: var(--space-4);
+
+    &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-2);
+    }
+}
+
+.table-wrap {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow-x: auto;
+    background: var(--color-surface);
+}
+
+.table {
+    width: 100%;
+    font-size: 0.875rem;
+    border-collapse: collapse;
+    th,
+
+    td {
+        padding: var(--space-3) var(--space-4);
+        text-align: left;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    th {
+        color: var(--color-text-muted);
+        font-weight: 600;
+        background: var(--color-bg);
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
 }
