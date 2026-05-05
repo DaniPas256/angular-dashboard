@@ -1,12 +1,10 @@
-import { ActivatedRouteSnapshot, Resolve } from "@angular/router";
-import { UserService } from "../services/user.service";
-import { Injectable } from "@angular/core";
+import { inject } from '@angular/core';
+import { ResolveFn } from '@angular/router';
+import { USER_STORE } from "../services/user.service.token";
+import { UsersServiceStore } from '../services/user.service.store';
 
-@Injectable()
-export class UserResolve implements Resolve<any> {
-  constructor(private usersService: UserService) {}
+export const userResolver: ResolveFn<any> = () => {
+  const userService : UsersServiceStore = inject<UsersServiceStore>(USER_STORE);
 
-  resolve() {
-    return this.usersService.init();
-  }
-}
+  return userService.loadUsers();
+};

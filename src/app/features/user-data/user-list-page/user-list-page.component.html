@@ -12,7 +12,7 @@
     aria-label="Filter users"
     appDebounceInput
     [appDebounceMs]="280"
-    (debouncedValue)="onFilterDebounced($event)"
+    (debouncedValue)="store.onFilterDebounced($event)"
   />
   <app-button type="button" variant="primary" (clicked)="openCreate()">Add user</app-button>
 </div>
@@ -32,19 +32,19 @@
 
 <app-card title="Directory">
   <app-table
-    [columns]="columns"
-    [rows]="view().slice"
-    [sortKey]="sortKeyForTable()"
-    [sortDir]="sortDirForTable()"
-    (sortChange)="onSort($event)"
+    [columns]="store.columns"
+    [rows]="store.view().slice"
+    [sortKey]="store.sortKeyForTable()"
+    [sortDir]="store.sortDirForTable()"
+    (sortChange)="store.onSort($event)"
     (rowClick)="onRowClick($event)"
   />
   <app-pagination
-    [page]="page()"
-    [pageSize]="pageSize()"
-    [total]="view().total"
-    (pageChange)="onPageChange($event)"
-    (pageSizeChange)="onPageSizeChange($event)"
+    [page]="store.page()"
+    [pageSize]="store.pageSize()"
+    [total]="store.view().total"
+    (pageChange)="store.onPageChange($event)"
+    (pageSizeChange)="store.onPageSizeChange($event)"
   />
 </app-card>
 
@@ -56,7 +56,7 @@
   <app-user-form
     [mode]="modalMode"
     [user]="editingUser"
-    (saved)="onSaved($event)"
+    (saved)="store.onSaved($event);closeModal();"
     (cancelled)="closeModal()"
   />
 </app-modal>

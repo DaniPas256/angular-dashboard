@@ -1,15 +1,28 @@
-import { of } from 'rxjs';
-import { UserResolve } from './user-data.resolver';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { userResolver } from './user-data.resolver';
+import { TestBed } from '@angular/core/testing';
+import { USER_STORE } from '../services/user.service.token';
 
-it('should call init on UserService', () => {
+it('should call loadData', () => {
   const mockService = {
-    init: jest.fn().mockReturnValue(of([]))
+    loadUsers: jest.fn(),
   };
 
-  const resolver = new UserResolve(mockService as any);
+  TestBed.configureTestingModule({
+    providers: [
+      {
+        provide: USER_STORE,
+        useValue: mockService,
+      },
+    ],
+  });
 
-  const result = resolver.resolve();
+  const routeSnapshot = {} as ActivatedRouteSnapshot;
+  const stateSnapshot = {} as RouterStateSnapshot;
 
-  expect(mockService.init).toHaveBeenCalled();
-  expect(result).toBeDefined();
+  TestBed.runInInjectionContext(() => {
+    userResolver(routeSnapshot, stateSnapshot);
+  });
+
+  expect(mockService.loadUsers).toHaveBeenCalled();
 });

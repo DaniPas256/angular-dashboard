@@ -9,7 +9,6 @@ import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 import { App } from './app/app';
 import { routes } from './app/app-routing-module';
-import { UserResolve } from './app/features/user-data/resolvers/user-data.resolver';
 
 bootstrapApplication(App, {
   providers: [
@@ -18,7 +17,6 @@ bootstrapApplication(App, {
     provideRouter(routes),
     provideHttpClient(),
     provideCharts(withDefaultRegisterables()),
-    UserResolve,
   ],
 })
   .catch((err) => console.error(err));

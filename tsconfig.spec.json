@@ -7,5 +7,5 @@
   "include": [
     "src/**/*.spec.ts",
     "src/**/*.d.ts"
-  ]
+, "src/app/features/user-data/services/user.service..apispec.ts"  ]
 }
