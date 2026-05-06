@@ -67,14 +67,6 @@ export class UserApiService {
     return users.filter((u) => u.id !== id);;
   }
 
-  saveToLocalStorage(users: User[]): void {
-    try {
-      localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(users));
-    } catch {
-      /* ignore */
-    }
-  }
-
   private transformUserData(users: User[]) {
     return users.map((user) => ({
       id: user.id?.toString() ?? crypto.randomUUID?.() ?? String(Date.now()),

@@ -1,7 +1,7 @@
-import { UserApiService } from './user.service.api';
+import { USER_STORAGE_KEY, UserApiService } from './user.service.api';
 import { firstValueFrom } from 'rxjs';
 import { User, UserSortKey } from '../models/user.model';
-import { computed, inject, signal } from '@angular/core';
+import { computed, effect, inject, signal } from '@angular/core';
 import {
   AppTableColumn,
   SortDirection,
@@ -55,6 +55,12 @@ export function createUsersServiceStore() {
 
     return { slice, total };
   });
+
+  effect( () => {
+    try {
+      localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(users()));
+    } catch { }    
+  })
 
   function onFilterDebounced(value: string): void {
     filterText.set(value);
@@ -132,7 +138,6 @@ export function createUsersServiceStore() {
 
   function updateUsersList(usersList: User[]): void {
     users.set(usersList);
-    usersApiService.saveToLocalStorage(usersList);
   }
 
   function transformToRowData(u: User): Record<string, unknown> {

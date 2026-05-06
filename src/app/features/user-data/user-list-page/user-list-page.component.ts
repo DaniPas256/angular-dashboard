@@ -58,7 +58,7 @@ export class UserListPageComponent {
 
   deleteUser(u: User): void {
     if (confirm(`Delete ${u.name}?`)) {
-      this.store.delete(u.id + '');
+      this.store.delete(`${u.id}`);
       if (this.selectedUser()?.id === u.id) {
         this.clearSelection();
       }

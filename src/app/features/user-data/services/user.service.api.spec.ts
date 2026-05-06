@@ -31,7 +31,7 @@ describe('UserApiService', () => {
     httpMock = TestBed.inject(HttpTestingController);
 
     // Clear localStorage before each test
-    localStorage.removeItem(USER_STORAGE_KEY);
+    localStorage.clear();
   });
 
   afterEach(() => {
@@ -234,20 +234,6 @@ describe('UserApiService', () => {
       
       expect(result.length).toBe(1);
       expect(result[0].id).toBe('1');
-    });
-  });
-
-  describe('saveToLocalStorage', () => {
-    it('should save users to localStorage', () => {
-      const users = [
-        { id: '1', name: 'Ada Lovelace', email: 'ada@example.com', role: 'Admin' }
-      ];
-      
-      jest.spyOn(Storage.prototype, 'setItem')
-      
-      service['saveToLocalStorage'](users);
-      
-      expect(localStorage.setItem).toHaveBeenCalledWith(USER_STORAGE_KEY, JSON.stringify(users));
     });
   });
 
