@@ -1,6 +1,6 @@
 # Portfolio Admin (Angular)
 
-# Highlights
+## Highlights
 
 - Built with zoneless Angular for improved performance and explicit reactivity (no Zone.js)
 - Modern architecture based on standalone components (no NgModules)
