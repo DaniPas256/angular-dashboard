@@ -109,7 +109,7 @@ export function createUsersServiceStore() {
       updateUsersList(data);
       return data;
     } catch (error) {
-      console.error('Failed to load users:', error);
+      // console.error('Failed to load users:', error);
       throw error;
     }
   }

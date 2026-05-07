@@ -14,7 +14,7 @@
     [appDebounceMs]="280"
     (debouncedValue)="store.onFilterDebounced($event)"
   />
-  <app-button type="button" variant="primary" (clicked)="openCreate()">Add user</app-button>
+  <app-button type="button" class="toolbar_addUser" variant="primary" (clicked)="openCreate()">Add user</app-button>
 </div>
 
 @if (selectedUser(); as user) {

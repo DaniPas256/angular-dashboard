@@ -61,17 +61,20 @@ export class UserFormComponent {
     });
   }
 
-  submit(): void {
+  submit(): boolean {
     this.form.markAllAsTouched();
     if (this.form.invalid) {
-      return;
+      return false;
     }
+
     const v = this.form.getRawValue();
     if (this.mode() === 'edit' && this.user()) {
       this.saved.emit({ id: this.user()?.id, ...v });
     } else {
       this.saved.emit(v);
     }
+
+    return true;
   }
 
   cancel(): void {

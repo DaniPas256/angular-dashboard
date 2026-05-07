@@ -1,4 +1,4 @@
-<form class="form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+<form class="form user__form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
   <app-input label="Name" formControlName="name" inputId="user-name" autocomplete="name" />
   @if (form.controls.name.touched && form.controls.name.errors; as err) {
     <ul class="form__errors">
