@@ -30,7 +30,6 @@ describe('UserApiService', () => {
     service = TestBed.inject(UserApiService);
     httpMock = TestBed.inject(HttpTestingController);
 
-    // Clear localStorage before each test
     localStorage.clear();
   });
 

@@ -28,11 +28,6 @@ describe('UserListPageComponent', () => {
         { provide: USER_STORE, useValue: mockStore }
       ]
     }).compileComponents();
-
-    // const injector = TestBed.inject(Injector);
-    // runInInjectionContext( injector, () => {
-
-    // })
     
     fixture = TestBed.createComponent(UserListPageComponent);
     component = fixture.componentInstance;

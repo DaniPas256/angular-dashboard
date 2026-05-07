@@ -14,7 +14,6 @@ const userApiServiceMock = {
   add: jest.fn().mockReturnValue(true),
   update: jest.fn().mockReturnValue(true),
   delete: jest.fn().mockReturnValue(true),
-  saveToLocalStorage: jest.fn(),
 };
 
 describe('UsersServiceStore', () => {
@@ -41,7 +40,6 @@ describe('UsersServiceStore', () => {
 
   it('should load users successfully', async () => {
     userApiServiceMock.loadUsersData.mockReturnValue(of(mockUsers));
-    userApiServiceMock.saveToLocalStorage();
     
     const result = await store.loadUsers();
     expect(result).toEqual(mockUsers);
@@ -60,7 +58,6 @@ describe('UsersServiceStore', () => {
 
   it('should add user', () => {
     userApiServiceMock.add.mockReturnValue([...mockUsers, { id: '3', name: 'New User', email: 'new@example.com', role: 'User' }]);
-    userApiServiceMock.saveToLocalStorage();
     
     const newUser = { name: 'New User', email: 'new@example.com', role: 'User' };
     const result = store.add(newUser);
@@ -75,7 +72,6 @@ describe('UsersServiceStore', () => {
       { id: '1', name: 'John Updated', email: 'john@example.com', role: 'Admin' },
       { id: '2', name: 'Jane Smith', email: 'jane@example.com', role: 'User' }
     ]);
-    userApiServiceMock.saveToLocalStorage();
     
     const updatedUser = { id: '1', name: 'John Updated', email: 'john@example.com', role: 'Admin' };
     const result = store.update(updatedUser);
@@ -86,7 +82,6 @@ describe('UsersServiceStore', () => {
   it('should delete user', () => {
     userApiServiceMock.add.mockReturnValue(mockUsers);
     userApiServiceMock.delete.mockReturnValue([mockUsers[1]]); // Only Jane
-    userApiServiceMock.saveToLocalStorage();
     
     const result = store.delete('1');
     
@@ -96,7 +91,6 @@ describe('UsersServiceStore', () => {
 
   it('should filter users', () => {
     userApiServiceMock.add.mockReturnValue(mockUsers);
-    userApiServiceMock.saveToLocalStorage();
     
     store.add({ id: '3', name: 'Test User', email: 'test@example.com', role: 'User' });
     
@@ -109,7 +103,6 @@ describe('UsersServiceStore', () => {
 
   it('should sort users by name', () => {
     userApiServiceMock.add.mockReturnValue(mockUsers);
-    userApiServiceMock.saveToLocalStorage();
     
     store.onSort('email');
     const view = store.view();
