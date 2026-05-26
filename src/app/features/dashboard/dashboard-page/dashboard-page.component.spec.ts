@@ -1,3 +1,4 @@
+import { ChartData } from 'chart.js';
 import { Directive, Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Subject } from 'rxjs';
@@ -61,9 +62,9 @@ describe('DashboardPageComponent', () => {
         { id: 's3', label: 'Open issues', value: '12' },
         { id: 's4', label: 'Uptime', value: '99.95%' },
       ],
-      line: { labels: ['Mon'], datasets: [{ data: [1] }] } as unknown,
-      bar: { labels: ['Auth'], datasets: [{ data: [2] }] } as unknown,
-      pie: { labels: ['TS'], datasets: [{ data: [3] }] } as unknown,
+      line: { labels: ['Mon'], datasets: [{ data: [1] }] } as ChartData<'line'>,
+      bar: { labels: ['Auth'], datasets: [{ data: [2] }] } as ChartData<'bar'>,
+      pie: { labels: ['TS'], datasets: [{ data: [3] }] } as ChartData<'pie'>,
     };
 
     subject.next(bundle);
