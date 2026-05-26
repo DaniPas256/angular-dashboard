@@ -5,6 +5,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 @Directive({
   selector: '[appDebounceInput]',
   standalone: true,
+  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
   host: {
     '(input)': 'onInput($event)',
   },

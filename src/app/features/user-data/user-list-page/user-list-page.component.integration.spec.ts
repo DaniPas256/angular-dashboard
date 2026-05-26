@@ -29,9 +29,9 @@ describe('UserListPageComponent integration', () => {
     role: 'Manager',
   };
 
-  let users = signal<User[]>([mockUser, { id: '2', ...newUserData }]);
+  const users = signal<User[]>([mockUser, { id: '2', ...newUserData }]);
 
-  let mockStore = {
+  const mockStore = {
     columns: [
       { key: 'name', label: 'Name', sortable: true },
       { key: 'email', label: 'Email', sortable: true },

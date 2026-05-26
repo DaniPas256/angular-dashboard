@@ -15,7 +15,7 @@ export class ThemeUiService {
     this.doc = document;
     
     effect(() => {
-      let mode = this.mode();
+      const mode = this.mode();
 
       const root = this.doc.documentElement;
       root.classList.toggle('theme-dark', mode === 'dark');

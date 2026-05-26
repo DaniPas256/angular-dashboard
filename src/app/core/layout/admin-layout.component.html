@@ -5,9 +5,9 @@
       <span class="brand__text">Demo console</span>
     </div>
     <nav class="nav">
-      <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
-      <a routerLink="/users" routerLinkActive="active">Users</a>
-      <a routerLink="/snippets" routerLinkActive="active">Snippets</a>
+      <a data-testid="dashboard" routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
+      <a data-testid="users" routerLink="/users" routerLinkActive="active">Users</a>
+      <a data-testid="snippets" routerLink="/snippets" routerLinkActive="active">Snippets</a>
     </nav>
     <div class="sidebar__footer">
       <app-button type="button" variant="ghost" (clicked)="toggleTheme()">

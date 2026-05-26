@@ -1,3 +1,4 @@
+import { ChartType } from 'chart.js';
 import { Directive, Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
@@ -28,7 +29,7 @@ describe('ChartCardComponent', () => {
   });
 
   it('should render no canvas when data is null', () => {
-    fixture.componentRef.setInput('chartType', 'bar' as any);
+    fixture.componentRef.setInput('chartType', 'bar' as unknown as ChartType);
     fixture.componentRef.setInput('data', null);
     fixture.detectChanges();
 
@@ -41,8 +42,8 @@ describe('ChartCardComponent', () => {
       datasets: [{ data: [100], backgroundColor: ['#000'] }],
     };
 
-    fixture.componentRef.setInput('chartType', 'pie' as any);
-    fixture.componentRef.setInput('data', pieData as any);
+    fixture.componentRef.setInput('chartType', 'pie' as unknown as ChartType);
+    fixture.componentRef.setInput('data', pieData as unknown as ChartType);
     fixture.detectChanges();
 
     expect(component.pieData).not.toBeNull();
@@ -56,8 +57,8 @@ describe('ChartCardComponent', () => {
       datasets: [{ label: 'Hours', data: [10] }],
     };
 
-    fixture.componentRef.setInput('chartType', 'bar' as any);
-    fixture.componentRef.setInput('data', nonPieData as any);
+    fixture.componentRef.setInput('chartType', 'bar' as unknown as ChartType);
+    fixture.componentRef.setInput('data', nonPieData as unknown as ChartType);
     fixture.detectChanges();
 
     expect(component.pieData).toBeNull();

@@ -14,14 +14,12 @@ class TestComponent {
 
 describe('DebounceInputDirective', () => {
   let fixture : ComponentFixture<TestComponent> ;
-  let component : TestComponent;
 
   beforeEach( () => {
     fixture = TestBed.configureTestingModule({
       imports: [TestComponent]
     }).createComponent(TestComponent)
 
-    component = fixture.componentInstance;
     fixture.detectChanges();
   })
 

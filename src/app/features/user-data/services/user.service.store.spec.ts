@@ -105,7 +105,7 @@ describe('UsersServiceStore', () => {
     userApiServiceMock.add.mockReturnValue(mockUsers);
     
     store.onSort('email');
-    const view = store.view();
+    store.view();
     
     expect(store.sortKey()).toBe('email');
     expect(store.sortDir()).toBe('asc');

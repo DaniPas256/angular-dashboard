@@ -13,10 +13,10 @@ describe('ThemeUiService', () => {
     },
   };
   const localStorageMock = (function() {
-  let store : any = {};
+  let store : { [key: string]: string } = {};
   return {
     getItem: function(key : string) {
-      return store[key];
+      return store[key] || '';
     },
     setItem: function(key : string, value : string) {
       store[key] = value.toString();

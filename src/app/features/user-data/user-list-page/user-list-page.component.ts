@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 
 import { AppButtonComponent } from '../../../shared/components/app-button/app-button.component';
 import { AppCardComponent } from '../../../shared/components/app-card/app-card.component';
