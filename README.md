@@ -43,3 +43,4 @@ Then open `http://localhost:4200/`. Main routes: `/dashboard`, `/users`, `/snipp
 - `src/app/features/dashboard` — placeholder KPIs + line / bar / pie charts
 - `src/app/features/user-data` — table + debounced filter + sort + pagination + modal CRUD; data in `localStorage`
 - `src/app/features/code-snippets` — sidebar categories + page body from `snippet-pages.data.ts` / `SnippetsCatalogService`
+
