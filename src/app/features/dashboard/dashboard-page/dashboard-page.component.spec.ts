@@ -61,9 +61,9 @@ describe('DashboardPageComponent', () => {
         { id: 's3', label: 'Open issues', value: '12' },
         { id: 's4', label: 'Uptime', value: '99.95%' },
       ],
-      line: { labels: ['Mon'], datasets: [{ data: [1] }] } as any,
-      bar: { labels: ['Auth'], datasets: [{ data: [2] }] } as any,
-      pie: { labels: ['TS'], datasets: [{ data: [3] }] } as any,
+      line: { labels: ['Mon'], datasets: [{ data: [1] }] } as unknown,
+      bar: { labels: ['Auth'], datasets: [{ data: [2] }] } as unknown,
+      pie: { labels: ['TS'], datasets: [{ data: [3] }] } as unknown,
     };
 
     subject.next(bundle);

@@ -6,7 +6,7 @@ describe('AppButtonComponent', () => {
   let fixture: ComponentFixture<AppButtonComponent>;
   let component: AppButtonComponent;
 
-  // @ts-ignore
+  // @ts-expect-error - MouseEvent is not constructible in JSDOM environment, we will mock it
   const mouseEventMock = {
     preventDefault: jest.fn(),
     stopPropagation: jest.fn(),

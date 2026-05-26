@@ -5,7 +5,7 @@ import { USER_STORE } from '../services/user.service.token';
 describe('UserListPageComponent', () => {
   let component: UserListPageComponent;
   let fixture: ComponentFixture<UserListPageComponent>;
-  let mockStore = {
+  const mockStore = {
     delete: jest.fn(),
     view: jest.fn().mockReturnValue({ slice: [], total: 0 }),
     sortKeyForTable: jest.fn().mockReturnValue('name'),

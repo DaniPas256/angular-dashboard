@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideHttpClient } from '@angular/common/http';
-import { UserApiService, USER_STORAGE_KEY } from './user.service.api';
+import { UserApiService } from './user.service.api';
 
 describe('UserApiService', () => {
   let service: UserApiService;
@@ -119,7 +119,7 @@ describe('UserApiService', () => {
         next: (users) => {
           expect(users).toEqual([]);
         },
-        error: (error) => {
+        error: () => {
           fail('Should not throw error');
         }
       });

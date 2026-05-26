@@ -1,4 +1,4 @@
-import { provideRouter, Router } from '@angular/router';
+import { provideRouter } from '@angular/router';
 import { ThemeUiService } from '../services/theme-ui.service';
 import { AdminLayoutComponent } from './admin-layout.component';
 import { ComponentFixture, TestBed } from "@angular/core/testing";

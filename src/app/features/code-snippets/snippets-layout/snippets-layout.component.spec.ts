@@ -46,7 +46,7 @@ describe('SnippetsLayoutComponent', () => {
     const getLinks = () =>
       Array.from(
         fixture.nativeElement.querySelectorAll('.snippets__links a'),
-      ).map((a: any) => a.textContent?.trim());
+      ).map((a: unknown) => (a as HTMLElement).textContent?.trim());
 
     expect(getLinks()).toEqual(['Alpha', 'Beta', 'RxJS']);
 

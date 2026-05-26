@@ -1,0 +1,27 @@
+{
+  "root": true,
+  "ignorePatterns": ["projects/**/*", "dist", "node_modules", "coverage"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "ecmaVersion": 2022,
+        "sourceType": "module",
+        "createDefaultProgram": true,
+        "project": ["tsconfig.app.json", "tsconfig.spec.json"]
+      },
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
+      ],
+      "rules": {}
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {}
+    }
+  ]
+}
