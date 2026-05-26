@@ -1,3 +1,7 @@
+[![Playwright Tests](https://github.com/DaniPas256/angular-dashboard/actions/workflows/playwright.yml/badge.svg)](https://github.com/DaniPas256/angular-dashboard/actions/workflows/playwright.yml)
+[![Deploy Pages](https://github.com/DaniPas256/angular-dashboard/actions/workflows/deploy-github-pages.yml/badge.svg)](https://github.com/DaniPas256/angular-dashboard/actions/workflows/deploy-github-pages.yml)
+[![License](https://img.shields.io/github/license/DaniPas256/angular-dashboard.svg)](LICENSE)
+
 # Portfolio Admin (Angular)
 
 ## Highlights
@@ -10,6 +14,8 @@
 - Custom form controls using ControlValueAccessor (CVA) for Reactive Forms integration
 - Reactive Forms for user management
 - Unit testing setup using Jest
+
+> Note: This project uses Angular's zoneless change detection via `provideZonelessChangeDetection()` in `src/main.ts`. The repository has been updated to reflect a zoneless approach; if you rely on third-party libraries that still require `zone.js`, add it back and document usage.
 
 [DEMO](https://danipas256.github.io/angular-dashboard/dashboard)
 
